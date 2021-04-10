@@ -1,0 +1,9 @@
+<div class="container">
+  
+    <div style="display: flex; width: 100%; flex-wrap: wrap;">
+    <div *ngFor="let picture of pictures" style="background-color: whitesmoke; width: 20%; margin: 20px auto; padding: 10px; box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) !important; border-radius: 5px;">
+          <h2>{{ picture.id }}: {{ picture.author }}</h2>
+          <img src='{{"https://picsum.photos/id/" + picture.id + "/300/300"}}' alt="Authour Url Image"/>
+
+    </div>
+    </div>
