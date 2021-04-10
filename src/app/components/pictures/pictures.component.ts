@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { DataService } from '../../services/data.service';
 
 @Component({
@@ -11,6 +12,8 @@ export class PicturesComponent implements OnInit {
 
   allPics: any;
   pictures: any;
+  selectedPictures: any;
+  authorSelected: any;
 
   constructor(private dataService:DataService) {}
       
@@ -18,6 +21,13 @@ export class PicturesComponent implements OnInit {
     this.allPics = this.dataService.getPictures().subscribe(data => {
       console.log(data)
       this.pictures=data
+    });
+  }
+
+  getAuthPictures(authorSelected:any) {
+    this.dataService.getAuthPictures(authorSelected).subscribe(data => {
+      console.log(data)
+      this.selectedPictures=data
     });
   }
 

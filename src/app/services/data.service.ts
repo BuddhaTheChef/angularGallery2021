@@ -20,4 +20,12 @@ export class DataService {
     );
   }
 
+  getAuthPictures(authorSelected:any) {
+    return this.http.get('https://picsum.photos/list').pipe(
+      tap(value => {
+        console.log(value);
+      })
+    );
+  }
+
 }
