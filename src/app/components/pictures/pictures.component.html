@@ -1,25 +1,41 @@
-<select [(ngModel)]="authorSelected" (ngModelChange)="getAuthPictures($event)">
+<div style="min-height:800px">
+<div class="container">
+<div class="carousel">
+      <ng-container *ngFor="let picture of pictures; let i = index">
+        <!-- <h2>{{ picture.id }}: {{ picture.author }}</h2> -->
+        <img
+        *ngIf="i === currentSlide"
+          src='{{"https://picsum.photos/id/" + picture.id + "/900/900"}}' alt="Authour Url Image"
+          class="slide"
+          @pictureAnimation
+        />
+      </ng-container>
+    
+      <!-- controls -->
+      <button class="control prev" (click)="onPreviousClick()">
+        <span class="arrow left"></span>
+      </button>
+      <button class="control next" (click)="onNextClick()">
+        <span class="arrow right"></span>
+      </button>
+    </div>
+</div>
+
+<div style="text-align: center; margin: 0 auto; padding: 50px;">
+<select [(ngModel)]="authorSelected" (ngModelChange)="getAuthPictures($event)" style="border-radius:5px;height: 30px;width: 300px;">
       <option *ngFor="let picture of pictures" [value]="picture.author">{{picture.author}}</option>
 </select>
+</div>
 
-The selected author is :: {{authorSelected}}
-<div *ngFor="let picture of selectedPictures">
+<!-- The selected author is :: {{authorSelected}} -->
+
+<div style="display: flex; width: 100%; flex-wrap: wrap; flex-direction: row; justify-content: center;">
+<div *ngFor="let picture of selectedPictures" >
       
-<div *ngIf='authorSelected == picture.author'>
-      <h2>{{picture.id}}</h2>
+<div *ngIf='authorSelected == picture.author' style="background-color: whitesmoke;min-width: 300px; margin: 30px 30px; padding: 10px; box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) !important; border-radius: 5px;"> 
       <h2>{{picture.author}}</h2>
       <img src='{{"https://picsum.photos/id/" + picture.id + "/300/300"}}' alt="Authour Url Image"/>
 </div>
 </div>
-
-
-<div class="container">
-  
-    <div style="display: flex; width: 100%; flex-wrap: wrap;">
-    <div *ngFor="let picture of pictures" style="background-color: whitesmoke; width: 20%; margin: 20px auto; padding: 10px; box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) !important; border-radius: 5px;">
-          <h2>{{ picture.id }}: {{ picture.author }}</h2>
-          <img src='{{"https://picsum.photos/id/" + picture.id + "/300/300"}}' alt="Authour Url Image"/>
-
-    </div>
-    </div>
-
+</div>
+</div>

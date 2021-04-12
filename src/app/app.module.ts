@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PicturesComponent } from './components/pictures/pictures.component'
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 import { DataService } from './services/data.service'
 
@@ -18,7 +19,8 @@ import { DataService } from './services/data.service'
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule
   ],
   providers: [DataService],
   bootstrap: [AppComponent]
