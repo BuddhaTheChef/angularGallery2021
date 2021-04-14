@@ -1,6 +1,10 @@
+.main-div {
+  min-height:800px
+}
+
 .container {
     display: block;
-   height: 500px;
+    height: 500px;
     width: 80%;
     padding: 2em;
     margin: 0 auto;
@@ -37,14 +41,13 @@
   .slide:hover {
     transform: scale(1.025);
   }
-  
   // =========================
-  // Next and Prev buttons
+  // Next and Prev buttons for top carosel
   // =========================
   .control {
     border: none;
     background-color: transparent;
-    outline: 0; // remove blue outline border, but make sure they are still focussable for accessibility
+    outline: 0; 
     position: absolute;
     cursor: pointer;
     z-index: 0;
@@ -58,27 +61,25 @@
     font-weight: bold;
     font-size: 3em;
     user-select: none;
+    border-radius: 5px !important;
     height: 20%;
     opacity: 80%;
-    // opacity effect on hover
     transition: opacity 150ms cubic-bezier(0.25, 0.46, 0.45, 0.84);
   
     &:hover, &:focus {
       opacity: 1;
     }
   
-    /* Position the buttons */
     &.next {
       right: 5% !important;
       top: 50%;
     }
     &.prev {
-      left: 5% !important;
+      left: 4.8% !important;
       top: 50%;
     }
   }
-  
-  /* style the arrows */
+
   .arrow {
     display: block;
     border-left: 0.1em solid white;
@@ -94,14 +95,31 @@
     }
   }
 
+  .select-div {
+    text-align: center; 
+    margin: 0 auto; 
+    padding: 50px;
+  }
 
+  .select-title-1 {
+    color: whitesmoke;
+  }
 
+  .select {
+    width: 100%;
+    min-width: 15ch;
+    max-width: 30ch;
+    border: 1px solid var(--select-border);
+    border-radius: 0.25em;
+    padding: 0.25em 0.5em;
+    font-size: 1rem;
+    cursor: pointer;
+    line-height: 1.1;
+    background-color: #fff;
+    background-image: linear-gradient(to top, #f9f9f9, #fff 33%);
 
-
-
-
-
-
+    height: 30px;
+  }
 
   .image-row {
     display: flex;
@@ -120,7 +138,7 @@
     width: 25%;
   }
   img {
-    width: 100%;
+       width: 100%;
   }
   .slide-modal {
     display: none;
@@ -136,11 +154,17 @@
   }
   .slide-modal-content {
     position: relative;
-    margin: 50px auto;
+    margin: 23px auto;
+    align-items: center;
+    justify-content: center;
     padding: 0;
     z-index: 3;
-    width: 50%;
-    max-width: 700px;
+    display: flex;
+    padding: 35px;
+    max-width: 800px;
+    background-color: whitesmoke;
+    border-radius: 26px;
+
   }
   .slide-modal-content .image-column {
     padding: 0;
@@ -169,7 +193,7 @@
   .next {
     cursor: pointer;
     position: absolute;
-    top: 35%;
+    top: 50%;
     width: auto;
     padding: 18px;
     margin-top: -50px;
@@ -189,9 +213,7 @@
   .next:hover {
     background-color: rgba(0, 0, 0, 0.8);
   }
-  img {
-    margin-bottom: -4px;
-  }
+
   .images {
     opacity: 0.7;
   }
@@ -204,4 +226,60 @@
   }
   .hover-shadow:hover {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.2);
+  }
+
+  .selectedList {
+    transition: transform 150ms cubic-bezier(0.25, 0.46, 0.45, 0.84);
+    background-color: 
+    whitesmoke;
+    min-width: 300px; 
+    margin: 40px 30px; 
+    padding: 0px 10px 10px 10px; 
+    box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) !important; 
+    border-radius: 5px;
+  }
+
+  .selectedList:hover {
+    transform: scale(1.025);
+  }
+
+  .main-content-wrapper-div {
+    display: flex; flex-wrap: wrap; 
+    flex-direction: row; 
+    justify-content: center; 
+    padding: 0px 175px;
+  }
+
+  .select-list-pic {
+    margin-top: 10px;
+  }
+
+  .select-list-author {
+    text-align: center;
+    font-weight: 300;
+  }
+
+  .selected-modal-div {
+    background-color: #283241;
+    color: whitesmoke;
+    min-height: 578px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    display: flex;
+    padding: 26px
+
+  }
+
+  .modal-pic-author {
+    font-weight:lighter;
+  }
+
+  .modal-pic-dimension {
+    font-weight:lighter; 
+    font-size: 12px;
+  }
+
+  .modal-links {
+    text-decoration: none; 
+    color: darkcyan;
   }

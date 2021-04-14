@@ -25,3 +25,18 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+Adaptiva Engineering (Front-end Engineer take-home challenge)
+
+- Create a gallery using the Lorem Picsum public API
+
+- Make an API call to Lorem Picsum's list endpoint to get an array of photo objects: https://picsum.photos/list
+
+- Filter the response to include only photos by author 'Alejandro Escamilla'
+
+- You may load and use any assets you like, except a pre-built slideshow component or library
+
+- At a minimum, users should be able to click to enlarge images in a modal view and navigate forward / backward between images
+
+- Add any additional features or functionality you see fit

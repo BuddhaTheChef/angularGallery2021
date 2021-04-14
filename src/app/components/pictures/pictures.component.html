@@ -1,13 +1,13 @@
-<div style="min-height:800px">
+<div class="main-div">
+
   <div class="container">
     <div class="carousel">
+      <!--top carousel -->
       <ng-container *ngFor="let picture of pictures; let i = index">
-        <!-- <h2>{{ picture.id }}: {{ picture.author }}</h2> -->
         <img *ngIf="i === currentSlide" src='{{"https://picsum.photos/id/" + picture.id + "/900/900"}}'
           alt="Authour Url Image" class="slide" @pictureAnimation />
       </ng-container>
-
-      <!-- controls -->
+      <!-- controls for top carousel -->
       <button class="control prev" (click)="onPreviousClick()">
         <span class="arrow left"></span>
       </button>
@@ -17,64 +17,43 @@
     </div>
   </div>
 
-  <div style="text-align: center; margin: 0 auto; padding: 50px;">
-    <h4>Search by Artist</h4>
-    <select [(ngModel)]="authorSelected" (ngModelChange)="getAuthPictures($event)"
-      style="border-radius:5px;height: 30px;width: 300px;">
-      <option *ngFor="let picture of pictures" [value]="picture.author">{{picture.author}}</option>
+  <!-- select input binding author to parse selected data -->
+  <div class="select-div">
+    <h4 class="select-title-1">Search by Artist</h4>
+    <select [(ngModel)]="authorSelected" (ngModelChange)="getAuthPictures($event)" class="select">
+      <option *ngFor="let picture of pictures.slice(1)" [value]="picture.author">{{picture.author}}</option>
     </select>
   </div>
- 
-  <div style="display: flex; width: 100%; flex-wrap: wrap; flex-direction: row; justify-content: center;">
+
+  <!-- list of selected data which is filtered by author in component.ts -->
+  <div class="main-content-wrapper-div">
     <div *ngFor="let picture of selectedPictures; let i = index">
-
-      <div *ngIf='authorSelected == picture.author'
-        style="background-color: 
-        whitesmoke;
-        min-width: 300px; 
-        margin: 40px 30px; 
-        padding: 0px 10px 10px 10px; 
-        box-shadow: 0 10px 16px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%) !important; 
-        border-radius: 5px;"
-        >
-        <h6 style="display: inline;">{{picture.id}}</h6>
-        
-        <img src='{{"https://picsum.photos/id/" + picture.id + "/300/300"}}' alt="Authour Url Image"
-        (click)="openModal(picture.id)" />
-        <h2 style="text-align: center;">{{picture.author}}</h2>
+      <div *ngIf='authorSelected == picture.author' class="selectedList">
+        <img class="select-list-pic" src='{{"https://picsum.photos/id/" + picture.id + "/300/300"}}'
+          alt="Authour Url Image" (click)="openModal(picture.id)" />
+        <h2 class="select-list-author">{{picture.author}}</h2>
       </div>
-
-      
-
-
     </div>
-
+    
+    <!-- modal container for selected image div -->
     <div id="imgModal" class="slide-modal">
       <span class="close cursor" (click)="closeModal()">&times;</span>
       <div class="slide-modal-content">
-        <ng-container *ngFor="let picture of pictures; let i = index">
-     
-          <img *ngIf="picture.id == slideIndex && authorSelected == picture.author" src='{{"https://picsum.photos/id/" + picture.id + "/600/600"}}'>
-        </ng-container>
+        <ng-container *ngFor="let picture of selectedPictures; let i = index">
 
+          <img *ngIf="i == slideIndex && authorSelected == picture.author"
+            src='{{"https://picsum.photos/id/" + picture.id + "/600/600"}}'>
+          <div *ngIf="i == slideIndex" class="selected-modal-div">
+            <p>Author: <br /><span class="modal-pic-author">{{picture.author}}</span></p>
+            <p>Dimensions: <br /> <span class="modal-pic-dimension">({{picture.width}}px, {{picture.height}}px)</span>
+            </p>
+            <p>Find Author: <a href="{{picture.author_url}}" target="_blank" class="modal-links">Here</a></p>
+            <p>Original Source: <a href="{{picture.post_url}}" target="_blank" class="modal-links">Here</a></p>
+          </div>
+        </ng-container>
+        <!-- modal carousel buttons -->
       </div>
       <a class="prev" (click)="onPrevious()">&#10094;</a>
       <a class="next" (click)="onNext()">&#10095;</a>
     </div>
-
-
-
-  </div>
-
-   <!-- <div id="imgModal" class="slide-modal">
-      <span class="close cursor" (click)="closeModal()">&times;</span>
-      <div class="slide-modal-content">
-        <ng-container *ngFor="let picture of pictures; let i = index">
-     
-          <img *ngIf="picture.id == currentSlide"  src='{{"https://picsum.photos/id/" + picture.id + "/600/600"}}'>
-        </ng-container>
-
-      </div>
-      <a class="prev" (click)="onPreviousClick()">&#10094;</a>
-      <a class="next" (click)="onNextClick()">&#10095;</a>
-    </div>  -->
+</div>
