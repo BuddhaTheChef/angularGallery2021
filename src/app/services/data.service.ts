@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
@@ -20,7 +20,7 @@ export class DataService {
     );
   }
 
-  getAuthPictures(authorSelected:any) {
+  getAuthPictures(authorSelected:any): Observable<any> {
     return this.http.get('https://picsum.photos/list').pipe(
       tap(value => {
         console.log(value);

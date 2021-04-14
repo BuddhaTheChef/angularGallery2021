@@ -14,7 +14,7 @@ import { DataService } from './services/data.service'
   declarations: [
     AppComponent,
     PicturesComponent
-  ],
+   ],
   imports: [
     BrowserModule,
     AppRoutingModule,

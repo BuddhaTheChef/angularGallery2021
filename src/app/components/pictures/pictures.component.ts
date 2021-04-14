@@ -19,14 +19,21 @@ import {scaleIn,scaleOut} from "./picture.animations";
     ])
   ]
 })
+
+
+
 export class PicturesComponent implements OnInit {
 
   allPics: any;
   pictures: any;
   selectedPictures: any;
   authorSelected: any;
+  currentPicture = 0;
   currentSlide = 0;
-
+  selectedPicture: any;
+  images = [];
+  slideIndex = 0;
+  picture: any;
   constructor(private dataService:DataService) {}
       
   getPictures() {
@@ -38,8 +45,9 @@ export class PicturesComponent implements OnInit {
 
   getAuthPictures(authorSelected:any) {
     this.dataService.getAuthPictures(authorSelected).subscribe(data => {
-      console.log(data)
       this.selectedPictures=data
+      console.log(data)
+      
     });
   }
 
@@ -53,6 +61,29 @@ export class PicturesComponent implements OnInit {
     const next = this.currentSlide + 1;
     this.currentSlide = next === this.pictures.length ? 0 : next;
     console.log("next clicked, new current slide is: ", this.currentSlide);
+  }
+
+  openModal(picture:any) {
+    const openEle = document.getElementById('imgModal') as HTMLElement;
+    openEle.style.display = "block";
+    console.log(picture)
+    this.selectedPicture = picture
+   }
+   closeModal() {
+    const closeEle = document.getElementById('imgModal') as HTMLElement;
+    closeEle.style.display = "none";
+   }
+
+   onPrevious() {
+    const previous = this.slideIndex - 1;
+    this.slideIndex = previous < 0 ? this.selectedPictures.length - 1 : previous;
+    console.log("previous clicked, new current slide is: ", this.slideIndex);
+  }
+
+  onNext() {
+    const next = this.slideIndex + 1;
+    this.slideIndex = next === this.selectedPictures.length ? 0 : next;
+    console.log("next clicked, new current slide is: ", this.slideIndex);
   }
 
   ngOnInit(): void {
